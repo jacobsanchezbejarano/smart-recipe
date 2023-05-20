@@ -47,7 +47,7 @@ const post_meal_plans = async (req, res, next) => {
   //const data = req.body;
   const timestamp = new Date().toJSON();
   const data = {
-        "user_id": req.body.user_id,
+        "user_name": req.body.user_name,
         "recipe": req.body.recipe,
         "date": timestamp,
   };
@@ -64,7 +64,7 @@ const update_meal_plans = async (req, res, next) => {
   const mealPlanId = new ObjectId(req.params.id);
   const timestamp = new Date().toJSON();
   const data = {
-        "user_id": req.body.user_id,
+        "user_name": req.body.user_name,
         "recipe": req.body.recipe,
         "date": timestamp,
   };
