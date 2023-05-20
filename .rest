@@ -1,116 +1,201 @@
-GET https://accounting-gwkc.onrender.com/
-###
-GET http://localhost:3000/ HTTP/1.1
-###
-GET http://localhost:3000/accounts HTTP/1.1
-###
-GET https://accounting-gwkc.onrender.com/accounts
-###
-GET http://localhost:3000/accounts/6444460cad10af8ef40ef881 HTTP/1.1
-###
-GET https://accounting-gwkc.onrender.com/accounts/6444460cad10af8ef40ef881
-###
-POST http://localhost:3000/accounts HTTP/1.1
+
+# LOCAL REQUEST FOR SMART RECIPE
+
+
+### Get all
+
+### Get all Users
+GET http://localhost:3000/Users HTTP/1.1
+
+### Get all Recipes
+GET http://localhost:3000/Recipes HTTP/1.1
+
+### Get all Ingredients
+GET http://localhost:3000/Ingredients HTTP/1.1
+
+### Get all Meal_Plans
+GET http://localhost:3000/Meal_Plans HTTP/1.1
+
+
+### Get by ID
+
+### Get car User id
+GET http://localhost:3000/Users/64682d42aa00cfdafc29e56a HTTP/1.1
+
+### Get car Recipe id
+GET http://localhost:3000/Recipes/64682d42aa00cfdafc29e56b HTTP/1.1
+
+### Get Ingredients by id
+GET http://localhost:3000/Ingredients/64682d42aa00cfdafc29e56c HTTP/1.1
+
+### Get Meal_Plans by id
+GET http://localhost:3000/Meal_Plans/64682d42aa00cfdafc29e56d HTTP/1.1
+
+
+### Create 
+
+### Create User
+POST http://localhost:3000/Users HTTP/1.1
 content-type: application/json
 
 {
-    "cod_account": "10005",
-    "nom_account": "Bank USD"
+  "username": "Jonathan",
+  "password": "Uribe",
+  "address": "1200 e 1880 w, 84005",
+  "phone": "8018008955",
+  "email": "Jonathan@gmail.com"
 }
 
-###
-POST https://accounting-gwkc.onrender.com/accounts
+### Create Recipe
+POST http://localhost:3000/Recipes HTTP/1.1
 content-type: application/json
 
 {
-    "cod_account": "0",
-    "nom_account": "Bank"
+    "recipe_title": "Arepa",
+    "description": "Bolas a base de harina con chirraron",
+    "ingredients ": "harina, chicharron, agua, y sal",
+    "instructions": "Hacer bolitas de harina con el agua , poner un poco de sal al gusto",
+    "prep_time": "15 minutos",
+    "serving_size": "1 persona",
+    "cook_time": "6 minutos"
 }
 
-###
-PUT http://localhost:3000/accounts/6456c9c1c3af6a09dad423a9 HTTP/1.1
+### Create Ingredients
+POST http://localhost:3000/Ingredients HTTP/1.1
 content-type: application/json
 
 {
-    "cod_account": "10005",
-    "nom_account": "Bank BCP USD"
+     "ingredient_name": "Masa",
+    "category": "harina",
+    "measure_type": "media taza"
 }
 
-###
-PUT https://accounting-gwkc.onrender.com/accounts/6449f7ff5a150846090a3089 HTTP/1.1
+### Create Meal_Plans
+POST http://localhost:3000/Meal_Plans HTTP/1.1
 content-type: application/json
 
 {
-    "cod_account": "10003",
-    "nom_account": "Bank 2"
+     "username": "Jonathan",
+    "recipe": "Arepa",
+    "date": "15/05/2023"
 }
 
+### PUT
 
-###
-DELETE http://localhost:3000/transactions/6456ce74e7c622f161294c02 HTTP/1.1
-
-###
-DELETE https://accounting-gwkc.onrender.com/transactions/6456ce74e7c622f161294c02 HTTP/1.1
-
-###
-GET http://localhost:3000/transactions HTTP/1.1
-###
-GET https://accounting-gwkc.onrender.com/transactions
-###
-GET http://localhost:3000/transactions/6444460cad10af8ef40ef881 HTTP/1.1
-###
-GET https://accounting-gwkc.onrender.com/transactions/6444460cad10af8ef40ef881
-###
-POST http://localhost:3000/transactions HTTP/1.1
+### Update User
+PUT http://localhost:3000/Users/64682d42aa00cfdafc29e56a HTTP/1.1
 content-type: application/json
 
 {
-  "cod_tra": "2",
-  "cod_account": "10002",
-  "debe": "100",
-  "haber": "0",
-  "status": "A"
+    "username": "Jonathan",
+    "password": "Uribe",
+    "address": "1200 e 1880 w, 84005",
+    "phone": "8018008955",
+    "email": "Jonathan@gmail.com"
 }
 
-###
-POST https://accounting-gwkc.onrender.com/transactions
+### Update Recipe
+PUT http://localhost:3000/Recipes/64682d42aa00cfdafc29e56b HTTP/1.1
 content-type: application/json
 
 {
-  "cod_tra": "2",
-  "cod_account": "10002",
-  "debe": "100",
-  "haber": "0",
-  "status": "A"
+    "recipe_title": "Arepa",
+    "description": "Bolas a base de harina con chirraron",
+    "ingredients ": "harina, chicharron, agua, y sal",
+    "instructions": "Hacer bolitas de harina con el agua , poner un poco de sal al gusto",
+    "prep_time": "15 minutos",
+    "serving_size": "1 persona",
+    "cook_time": "6 minutos"
 }
 
-###
-PUT http://localhost:3000/transactions/6456c9c1c3af6a09dad423a9 HTTP/1.1
+### Update Ingredients
+PUT http://localhost:3000/Ingredients/64682d42aa00cfdafc29e56c HTTP/1.1
 content-type: application/json
 
 {
-  "cod_tra": "2",
-  "cod_account": "10002",
-  "debe": "100",
-  "haber": "0",
-  "status": "A"
+     "ingredient_name": "Masa",
+    "category": "harina",
+    "measure_type": "media taza"
 }
 
-###
-PUT https://accounting-gwkc.onrender.com/transactions/6449f7ff5a150846090a3089 HTTP/1.1
+### Update Meal_Plans
+PUT http://localhost:3000/Meal_Plans/64682d42aa00cfdafc29e56d HTTP/1.1
 content-type: application/json
 
 {
-  "cod_tra": "2",
-  "cod_account": "10002",
-  "debe": "100",
-  "haber": "0",
-  "status": "A"
+     "username": "Jonathan",
+    "recipe": "Arepa",
+    "date": "15/05/2023"
 }
 
 
-###
-DELETE http://localhost:3000/transactions/6456ce74e7c622f161294c02 HTTP/1.1
+### DELETE 
 
-###
-DELETE https://accounting-gwkc.onrender.com/transactions/6456ce74e7c622f161294c02 HTTP/1.1
+
+### Delete User id
+DELETE http://localhost:3000/Users/ HTTP/1.1
+
+### Delete Recipe id
+DELETE http://localhost:3000/Recipes/ HTTP/1.1
+
+### Delete Ingredients by id
+DELETE http://localhost:3000/Ingredients/ HTTP/1.1
+
+### Delete Meal_Plans by id
+DELETE  http://localhost:3000/Meal_Plans/ HTTP/1.1
+
+
+
+# // SMART RECIPE Swagger Deploy 
+
+
+
+
+# ### Get all cars
+# GET https://cse341-node-project.onrender.com/cars
+
+
+# ### Get car by id
+# GET https://cse341-node-project.onrender.com/cars/64535815fca8687c4e70bfdd
+
+
+# ### Create car
+# POST https://cse341-node-project.onrender.com/cars HTTP/1.1
+# content-type: application/json
+
+# {
+#     "make": "hyundai",
+#     "model": "elantra",
+#     "trim": "limited",
+#     "year": "2012",
+#     "driveType": "awd",
+#     "color": "blue",
+#     "titleType": "clean",
+#     "miles": "100000",
+#     "transmissionType": "automatic",
+#     "carType": "car"
+# }
+
+
+# ### PUT car
+# PUT https://cse341-node-project.onrender.com/cars/64535815fca8687c4e70bfdd HTTP/1.1
+# content-type: application/json
+
+# {
+#     "make": "toyota",
+#     "model": "corolla",
+#     "trim": "limited",
+#     "year": "2020",
+#     "driveType": "awd",
+#     "color": "negro",
+#     "titleType": "clean",
+#     "miles": "20000",
+#     "transmissionType": "automatic",
+#     "carType": "car"
+# }
+
+
+# ### DELETE car
+# DELETE https://cse341-node-project.onrender.com/cars/ HTTP/1.1
+
+
