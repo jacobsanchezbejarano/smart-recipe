@@ -36,7 +36,7 @@ const post_users = async (req, res, next) => {
     "password": req.body.password,
     "address": req.body.address,
     "phone": req.body.phone,
-    "email": req.bodyemail.email
+    "email": req.body.email
   };
 
     const response = await mongodb.getCluster().db().collection('Users').insertOne(data);
@@ -54,7 +54,7 @@ const update_users = async (req, res, next) => {
     "password": req.body.password,
     "address": req.body.address,
     "phone": req.body.phone,
-    "email": req.bodyemail.email
+    "email": req.body.email
   };
   const response = await mongodb.getCluster().db().collection('Users')
   .replaceOne({ _id: userId }, data);

@@ -11,20 +11,6 @@
     "https"
   ],
   "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/users/": {
       "get": {
         "description": "",
@@ -63,6 +49,9 @@
                   "example": "any"
                 },
                 "phone": {
+                  "example": "any"
+                },
+                "email": {
                   "example": "any"
                 }
               }
@@ -133,6 +122,9 @@
                   "example": "any"
                 },
                 "phone": {
+                  "example": "any"
+                },
+                "email": {
                   "example": "any"
                 }
               }
