@@ -39,7 +39,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "user_name": {
                   "example": "any"
                 },
                 "password": {
@@ -112,7 +112,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "user_name": {
                   "example": "any"
                 },
                 "password": {

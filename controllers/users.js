@@ -32,7 +32,7 @@ const post_users = async (req, res, next) => {
   console.log(req.body);
   //const data = req.body;
   const data = {
-    "username": req.body.username,
+    "user_name": req.body.user_name,
     "password": req.body.password,
     "address": req.body.address,
     "phone": req.body.phone,
@@ -50,7 +50,7 @@ const post_users = async (req, res, next) => {
 const update_users = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
   const data = {
-    "username": req.body.username,
+    "user_name": req.body.user_name,
     "password": req.body.password,
     "address": req.body.address,
     "phone": req.body.phone,
