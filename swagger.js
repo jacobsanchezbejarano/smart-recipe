@@ -2,10 +2,10 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'wdd341',
-    description: 'Web Services Project',
+    title: 'Smart Recipe',
+    description: 'Team Project',
   },
-  host: 'accounting-gwkc.onrender.com',
+  host: 'smart-recipe.onrender.com',
   schemes: ['https'],
 };
 
