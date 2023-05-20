@@ -396,19 +396,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "cod_tra": {
+                "ingredient_name": {
                   "example": "any"
                 },
-                "cod_account": {
+                "category": {
                   "example": "any"
                 },
-                "debe": {
-                  "example": "any"
-                },
-                "haber": {
-                  "example": "any"
-                },
-                "status": {
+                "measure_type": {
                   "example": "any"
                 }
               }
@@ -469,19 +463,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "cod_tra": {
+                "ingredient_name": {
                   "example": "any"
                 },
-                "cod_account": {
+                "category": {
                   "example": "any"
                 },
-                "debe": {
-                  "example": "any"
-                },
-                "haber": {
-                  "example": "any"
-                },
-                "status": {
+                "measure_type": {
                   "example": "any"
                 }
               }
@@ -519,6 +507,33 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ingredients/{ingredient_name}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ingredient_name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
