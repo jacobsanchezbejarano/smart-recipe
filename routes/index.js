@@ -6,8 +6,11 @@ const routes = express.Router();
 const functions = require('../controllers/');
 const passport = require('passport');
 
-routes.use('/accounts', require('./accounts'));
-routes.use('/transactions', require('./transactions'));
+routes.use('/users', require('./users'));
+routes.use('/recipes', require('./recipes'));
+routes.use('/ingredients', require('./ingredients'));
+routes.use('/meal_plans', require('./meal_plans'));
+
 routes.use('/', require('./swagger'));
 
 routes.get('/login', passport.authenticate('github'), (req, res) => {});

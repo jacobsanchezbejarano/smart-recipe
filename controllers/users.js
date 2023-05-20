@@ -1,9 +1,9 @@
 let mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll_transactions = async (req, res, next) => {
+const getAll_users = async (req, res, next) => {
   try {
-    const result = await mongodb.getCluster().db().collection('transactions').find();
+    const result = await mongodb.getCluster().db().collection('Users').find();
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
       res.statusCode = 200;
@@ -14,10 +14,10 @@ const getAll_transactions = async (req, res, next) => {
   }
 };
 
-const getSingle_transactions = async (req, res, next) => {
+const getSingle_users = async (req, res, next) => {
     try {
       const userId = new ObjectId(req.params.id);
-      const result = await mongodb.getCluster().db().collection('transactions').find({ _id: userId });
+      const result = await mongodb.getCluster().db().collection('Users').find({ _id: userId });
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.statusCode = 200;
@@ -28,20 +28,18 @@ const getSingle_transactions = async (req, res, next) => {
     }
 };
 
-const post_transactions = async (req, res, next) => {
+const post_users = async (req, res, next) => {
   console.log(req.body);
   //const data = req.body;
-  const timestamp = new Date().toJSON();
   const data = {
-        "cod_tra": req.body.cod_tra,
-        "cod_account": req.body.cod_account,
-        "date": timestamp,
-        "debe": req.body.debe,
-        "haber": req.body.haber,
-        "status": req.body.status
+    "username": req.body.username,
+    "password": req.body.password,
+    "address": req.body.address,
+    "phone": req.body.phone,
+    "email": req.bodyemail.email
   };
 
-    const response = await mongodb.getCluster().db().collection('transactions').insertOne(data);
+    const response = await mongodb.getCluster().db().collection('Users').insertOne(data);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
@@ -49,18 +47,16 @@ const post_transactions = async (req, res, next) => {
     }
 }
 
-const update_transactions = async (req, res, next) => {
+const update_users = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
-  const timestamp = new Date().toJSON();
   const data = {
-        "cod_tra": req.body.cod_tra,
-        "cod_account": req.body.cod_account,
-        "date": timestamp,
-        "debe": req.body.debe,
-        "haber": req.body.haber,
-        "status": req.body.status
+    "username": req.body.username,
+    "password": req.body.password,
+    "address": req.body.address,
+    "phone": req.body.phone,
+    "email": req.bodyemail.email
   };
-  const response = await mongodb.getCluster().db().collection('transactions')
+  const response = await mongodb.getCluster().db().collection('Users')
   .replaceOne({ _id: userId }, data);
   if(response.modifiedCount > 0) {
     res.status(204).send();
@@ -69,9 +65,9 @@ const update_transactions = async (req, res, next) => {
   }
 }
 
-const delete_transactions = async (req, res, next) => {
+const delete_users = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getCluster().db().collection('transactions').deleteOne({ _id: userId });
+  const response = await mongodb.getCluster().db().collection('Users').deleteOne({ _id: userId });
   if (response.deletedCount > 0) {
     res.status(200).send();
   } else {
@@ -80,9 +76,9 @@ const delete_transactions = async (req, res, next) => {
 }
 
 module.exports = {
-    getAll_transactions,
-    getSingle_transactions,
-    post_transactions,
-    update_transactions,
-    delete_transactions
+    getAll_users,
+    getSingle_users,
+    post_users,
+    update_users,
+    delete_users
 }

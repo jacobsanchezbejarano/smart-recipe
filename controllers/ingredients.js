@@ -1,9 +1,9 @@
 let mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
+const getAll_ingredients = async (req, res, next) => {
   try {
-    const result = await mongodb.getCluster().db().collection('plan').find();
+    const result = await mongodb.getCluster().db().collection('Ingredients').find();
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
       res.statusCode = 200;
@@ -14,10 +14,10 @@ const getAll = async (req, res, next) => {
   }
 };
 
-const getSingle_account = async (req, res, next) => {
+const getSingle_ingredients = async (req, res, next) => {
     try {
       const userId = new ObjectId(req.params.id);
-      const result = await mongodb.getCluster().db().collection('plan').find({ _id: userId });
+      const result = await mongodb.getCluster().db().collection('Ingredients').find({ _id: userId });
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.statusCode = 200;
@@ -28,15 +28,20 @@ const getSingle_account = async (req, res, next) => {
     }
 };
 
-const post_account = async (req, res, next) => {
+const post_ingredients = async (req, res, next) => {
   console.log(req.body);
   //const data = req.body;
+  const timestamp = new Date().toJSON();
   const data = {
-    "cod_account": req.body.cod_account,
-    "nom_account": req.body.nom_account
+        "cod_tra": req.body.cod_tra,
+        "cod_account": req.body.cod_account,
+        "date": timestamp,
+        "debe": req.body.debe,
+        "haber": req.body.haber,
+        "status": req.body.status
   };
 
-    const response = await mongodb.getCluster().db().collection('plan').insertOne(data);
+    const response = await mongodb.getCluster().db().collection('Ingredients').insertOne(data);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
@@ -44,13 +49,18 @@ const post_account = async (req, res, next) => {
     }
 }
 
-const update_account = async (req, res, next) => {
+const update_ingredients = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
+  const timestamp = new Date().toJSON();
   const data = {
-    "cod_account": req.body.cod_account,
-    "nom_account": req.body.nom_account
+        "cod_tra": req.body.cod_tra,
+        "cod_account": req.body.cod_account,
+        "date": timestamp,
+        "debe": req.body.debe,
+        "haber": req.body.haber,
+        "status": req.body.status
   };
-  const response = await mongodb.getCluster().db().collection('plan')
+  const response = await mongodb.getCluster().db().collection('Ingredients')
   .replaceOne({ _id: userId }, data);
   if(response.modifiedCount > 0) {
     res.status(204).send();
@@ -59,9 +69,9 @@ const update_account = async (req, res, next) => {
   }
 }
 
-const delete_account = async (req, res, next) => {
+const delete_ingredients = async (req, res, next) => {
   const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getCluster().db().collection('plan').deleteOne({ _id: userId });
+  const response = await mongodb.getCluster().db().collection('Ingredients').deleteOne({ _id: userId });
   if (response.deletedCount > 0) {
     res.status(200).send();
   } else {
@@ -70,9 +80,9 @@ const delete_account = async (req, res, next) => {
 }
 
 module.exports = {
-    getAll,
-    getSingle_account,
-    post_account,
-    update_account,
-    delete_account
+    getAll_ingredients,
+    getSingle_ingredients,
+    post_ingredients,
+    update_ingredients,
+    delete_ingredients
 }
