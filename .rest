@@ -1,0 +1,116 @@
+GET https://accounting-gwkc.onrender.com/
+###
+GET http://localhost:3000/ HTTP/1.1
+###
+GET http://localhost:3000/accounts HTTP/1.1
+###
+GET https://accounting-gwkc.onrender.com/accounts
+###
+GET http://localhost:3000/accounts/6444460cad10af8ef40ef881 HTTP/1.1
+###
+GET https://accounting-gwkc.onrender.com/accounts/6444460cad10af8ef40ef881
+###
+POST http://localhost:3000/accounts HTTP/1.1
+content-type: application/json
+
+{
+    "cod_account": "10005",
+    "nom_account": "Bank USD"
+}
+
+###
+POST https://accounting-gwkc.onrender.com/accounts
+content-type: application/json
+
+{
+    "cod_account": "0",
+    "nom_account": "Bank"
+}
+
+###
+PUT http://localhost:3000/accounts/6456c9c1c3af6a09dad423a9 HTTP/1.1
+content-type: application/json
+
+{
+    "cod_account": "10005",
+    "nom_account": "Bank BCP USD"
+}
+
+###
+PUT https://accounting-gwkc.onrender.com/accounts/6449f7ff5a150846090a3089 HTTP/1.1
+content-type: application/json
+
+{
+    "cod_account": "10003",
+    "nom_account": "Bank 2"
+}
+
+
+###
+DELETE http://localhost:3000/transactions/6456ce74e7c622f161294c02 HTTP/1.1
+
+###
+DELETE https://accounting-gwkc.onrender.com/transactions/6456ce74e7c622f161294c02 HTTP/1.1
+
+###
+GET http://localhost:3000/transactions HTTP/1.1
+###
+GET https://accounting-gwkc.onrender.com/transactions
+###
+GET http://localhost:3000/transactions/6444460cad10af8ef40ef881 HTTP/1.1
+###
+GET https://accounting-gwkc.onrender.com/transactions/6444460cad10af8ef40ef881
+###
+POST http://localhost:3000/transactions HTTP/1.1
+content-type: application/json
+
+{
+  "cod_tra": "2",
+  "cod_account": "10002",
+  "debe": "100",
+  "haber": "0",
+  "status": "A"
+}
+
+###
+POST https://accounting-gwkc.onrender.com/transactions
+content-type: application/json
+
+{
+  "cod_tra": "2",
+  "cod_account": "10002",
+  "debe": "100",
+  "haber": "0",
+  "status": "A"
+}
+
+###
+PUT http://localhost:3000/transactions/6456c9c1c3af6a09dad423a9 HTTP/1.1
+content-type: application/json
+
+{
+  "cod_tra": "2",
+  "cod_account": "10002",
+  "debe": "100",
+  "haber": "0",
+  "status": "A"
+}
+
+###
+PUT https://accounting-gwkc.onrender.com/transactions/6449f7ff5a150846090a3089 HTTP/1.1
+content-type: application/json
+
+{
+  "cod_tra": "2",
+  "cod_account": "10002",
+  "debe": "100",
+  "haber": "0",
+  "status": "A"
+}
+
+
+###
+DELETE http://localhost:3000/transactions/6456ce74e7c622f161294c02 HTTP/1.1
+
+###
+DELETE https://accounting-gwkc.onrender.com/transactions/6456ce74e7c622f161294c02 HTTP/1.1
