@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
   info: {
     title: 'Smart Recipe',
-    description: 'Team Project',
+    description: 'Team Project'
   },
   host: 'smart-recipe.onrender.com',
   schemes: ['https'],
@@ -16,4 +16,4 @@ const endpointsFiles = ['./routes/index.js'];
    'endpointsFiles' only the root file where the route starts,
    such as index.js, app.js, routes.js, ... */
 
-swaggerAutogen(outputFile, endpointsFiles, doc)
+swaggerAutogen(outputFile, endpointsFiles, doc);

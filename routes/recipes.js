@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 const recipesFunctions = require('../controllers/recipes');
-const { isAuthenticated } = require("../helpers/authenticate");
+const { isAuthenticated } = require('../helpers/authenticate');
 
 routes.get('/', isAuthenticated, recipesFunctions.getAll_recipes);
 routes.get('/:id', isAuthenticated, recipesFunctions.getSingle_recipes);
