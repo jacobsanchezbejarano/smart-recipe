@@ -5,8 +5,10 @@ const doc = {
     title: 'Smart Recipe',
     description: 'Team Project'
   },
-  host: 'smart-recipe.onrender.com',
+  host: 'smart-recipe-6get.onrender.com',
   schemes: ['https'],
+  // host: 'localhost:3000',
+  // schemes: ['http'],
 };
 
 const outputFile = './swagger-output.json';
