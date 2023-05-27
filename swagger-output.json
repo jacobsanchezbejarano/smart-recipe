@@ -5,7 +5,7 @@
     "description": "Team Project",
     "version": "1.0.0"
   },
-  "host": "smart-recipe.onrender.com",
+  "host": "smart-recipe-6get.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
