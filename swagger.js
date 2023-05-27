@@ -5,7 +5,7 @@ const doc = {
     title: 'Smart Recipe',
     description: 'Team Project'
   },
-  host: 'smart-recipe-6get.onrender.com',
+  host: 'smart-recipe.onrender.com',
   schemes: ['https'],
   // host: 'localhost:3000',
   // schemes: ['http'],

@@ -5,12 +5,26 @@
     "description": "Team Project",
     "version": "1.0.0"
   },
-  "host": "smart-recipe-6get.onrender.com",
+  "host": "smart-recipe.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
   ],
   "paths": {
+    "/login": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/users/": {
       "get": {
         "description": "",
