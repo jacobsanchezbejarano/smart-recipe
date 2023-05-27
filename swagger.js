@@ -8,7 +8,7 @@ const doc = {
   host: 'smart-recipe.onrender.com',
   schemes: ['https'],
   // host: 'localhost:3000',
-  // schemes: ['http'],
+  // schemes: ['http']
 };
 
 const outputFile = './swagger-output.json';
