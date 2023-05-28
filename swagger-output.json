@@ -9,20 +9,6 @@
   "basePath": "/",
   "schemes": ["https"],
   "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/users/": {
       "get": {
         "description": "",
