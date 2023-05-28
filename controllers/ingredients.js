@@ -52,7 +52,7 @@ const getAll_ingredients = async (req, res) => {
 const getSingle_ingredients = async (req, res) => {
   try {
     const ingredientId = new ObjectId(req.params.id);
-    // validate exist id
+    
     const existingIngredients = await mongodb
       .getCluster()
       .db()
