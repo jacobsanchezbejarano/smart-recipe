@@ -9,13 +9,6 @@
   "basePath": "/",
   "schemes": ["https"],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/users/": {
       "get": {
         "description": "",
