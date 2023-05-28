@@ -42,7 +42,7 @@ let _db;
 
 const initDb = (callback) => {
   if (_db) {
-    console.log('Db is already initialized!');
+    //console.log('Db is already initialized!');
     return callback(null, _db);
   }
   _client.connect()
@@ -79,7 +79,7 @@ const main = async function () {
 const listDatabases = async function (client){
     databasesList = await client.db().admin().listDatabases();
 
-    console.log("Databases:");
+    //console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
