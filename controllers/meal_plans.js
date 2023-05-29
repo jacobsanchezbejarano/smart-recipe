@@ -81,6 +81,17 @@ const getSingle_meal_plans = async (req, res) => {
 const getSingle_meal_plans_by_recipe_name = async (req, res) => {
   try {
     const recipeName = req.params.recipe;
+
+     // validate exist recipe
+     const existinrecipename = await mongodb
+     .getCluster()
+     .db()
+     .collection('Meal_Plans')
+     .findOne({ recipe: recipeName });
+
+   if (!existinrecipename) {
+     return res.status(404).json({ error: 'Record not found' });
+   }
     const result = await mongodb
       .getCluster()
       .db()
@@ -90,7 +101,7 @@ const getSingle_meal_plans_by_recipe_name = async (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
     res.statusCode = 200;
-    res.json(result[0]);
+    res.json(result);
   } catch (error) {
     res.status(400).json({ message: error });
   }

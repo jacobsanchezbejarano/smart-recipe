@@ -116,16 +116,26 @@ const getSingle_recipes = async (req, res) => {
 const getSingle_recipes_by_recipe_title = async (req, res) => {
   try {
     const recipeTitle = req.params.recipe_title;
-    const result = await mongodb
-      .getCluster()
-      .db()
-      .collection('Recipes')
-      .find({ recipe_title: recipeTitle });
-    result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.statusCode = 200;
-      res.json(lists[0]);
-    });
+    // validate exist recipe title
+    const existinrecipetitle = await mongodb
+    .getCluster()
+    .db()
+    .collection('Recipes')
+    .findOne({ recipe_title: recipeTitle });
+
+  if (!existinrecipetitle) {
+    return res.status(404).json({ error: 'Record not found' });
+  }
+   const result = await mongodb
+     .getCluster()
+     .db()
+     .collection('Recipes')
+     .find({ recipe_title: recipeTitle })
+     .toArray();
+
+   res.setHeader('Content-Type', 'application/json');
+   res.statusCode = 200;
+   res.json(result);
   } catch (error) {
     res.status(400).json({ message: error });
   }
