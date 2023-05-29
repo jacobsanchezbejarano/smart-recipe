@@ -6,7 +6,7 @@ const { isAuthenticated } = require('../helpers/authenticate');
 routes.get('/', isAuthenticated, ingredientsFunctions.getAll_ingredients);
 routes.get('/:id', isAuthenticated, ingredientsFunctions.getSingle_ingredients);
 routes.get(
-  '/:ingredient_name',
+  '/ingredient_name/:ingredient_name',
   isAuthenticated,
   ingredientsFunctions.getSingle_ingredients_by_name
 );
