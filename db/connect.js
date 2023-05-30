@@ -33,7 +33,7 @@
 
 const dotenv = require('dotenv');
 dotenv.config();
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGO_CONNECTION_URI;
 const _client = new MongoClient(uri);
@@ -45,7 +45,8 @@ const initDb = (callback) => {
     //console.log('Db is already initialized!');
     return callback(null, _db);
   }
-  _client.connect()
+  _client
+    .connect()
     .then((client) => {
       _db = client;
       callback(null, _db);
@@ -63,29 +64,26 @@ const getCluster = () => {
 };
 
 const main = async function () {
-	try {
-        await _client.connect();
-        await listDatabases(_client);
-
-    } catch (e) {
-        console.error(e);
-
-    } finally {
-        await _client.close();
-
-    }
+  try {
+    await _client.connect();
+    await listDatabases(_client);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await _client.close();
+  }
 };
 
-const listDatabases = async function (client){
-    databasesList = await client.db().admin().listDatabases();
+const listDatabases = async function (client) {
+  databasesList = await client.db().admin().listDatabases();
 
     //console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
 module.exports = Object.freeze({
-    main,
-    listDatabases,
-    initDb,
-    getCluster,
+  main,
+  listDatabases,
+  initDb,
+  getCluster
 });
