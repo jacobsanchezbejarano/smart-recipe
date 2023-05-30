@@ -80,16 +80,27 @@ const getSingle_ingredients = async (req, res) => {
 const getSingle_ingredients_by_name = async (req, res) => {
   try {
     const ingredientName = req.params.ingredient_name;
+     // validate exist ingredients name
+     const existiningredientsname = await mongodb
+     .getCluster()
+     .db()
+     .collection('Ingredients')
+     .findOne({ ingredient_name: ingredientName });
+ 
+   if (!existiningredientsname) {
+     return res.status(404).json({ error: 'Record not found' });
+   }
+
     const result = await mongodb
       .getCluster()
       .db()
       .collection('Ingredients')
-      .find({ ingredient_name: ingredientName });
-    result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.statusCode = 200;
-      res.json(lists[0]);
-    });
+      .find({ ingredient_name: ingredientName })
+    . toArray();
+
+   res.setHeader('Content-Type', 'application/json');
+   res.statusCode = 200;
+   res.json(result);
   } catch (error) {
     res.status(400).json({ message: error });
   }
