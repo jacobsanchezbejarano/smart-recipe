@@ -3,7 +3,7 @@ const routes = express.Router();
 const recipesFunctions = require('../controllers/recipes');
 const { isAuthenticated } = require('../helpers/authenticate');
 
-routes.get('/', isAuthenticated, recipesFunctions.getAll_recipes);
+routes.get('/', recipesFunctions.getAll_recipes);
 routes.get('/:id', isAuthenticated, recipesFunctions.getSingle_recipes);
 routes.get('/recipe_title/:recipe_title', isAuthenticated, recipesFunctions.getSingle_recipes_by_recipe_title);
 routes.post('/', isAuthenticated, recipesFunctions.post_recipes);

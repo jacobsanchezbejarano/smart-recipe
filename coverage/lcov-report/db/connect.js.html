@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.03% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/27</span>
+                <span class='fraction'>12/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">46.15% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/26</span>
+                <span class='fraction'>12/26</span>
             </div>
         
             
@@ -152,9 +152,7 @@
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,6 +201,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,8 +211,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,12 +222,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -280,7 +276,7 @@
 &nbsp;
 const dotenv = require('dotenv');
 dotenv.config();
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 &nbsp;
 const uri = process.env.MONGO_CONNECTION_URI;
 const _client = new MongoClient(uri);
@@ -292,7 +288,8 @@ const initDb = <span class="fstat-no" title="function not covered" >(c</span>all
     //console.log('Db is already initialized!');
 <span class="cstat-no" title="statement not covered" >    return callback(null, _db);</span>
   }
-<span class="cstat-no" title="statement not covered" >  _client.connect()</span>
+<span class="cstat-no" title="statement not covered" >  _client</span>
+    .connect()
     .then(<span class="fstat-no" title="function not covered" >(c</span>lient) =&gt; {
 <span class="cstat-no" title="statement not covered" >      _db = client;</span>
 <span class="cstat-no" title="statement not covered" >      callback(null, _db);</span>
@@ -302,39 +299,36 @@ const initDb = <span class="fstat-no" title="function not covered" >(c</span>all
     });
 };
 &nbsp;
-const getCluster = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (!_db) {</span>
-<span class="cstat-no" title="statement not covered" >    throw Error('Db not initialized');</span>
+const getCluster = () =&gt; {
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (!_db) {
+    throw Error('Db not initialized');
   }
 <span class="cstat-no" title="statement not covered" >  return _db;</span>
 };
 &nbsp;
 const main = <span class="fstat-no" title="function not covered" >as</span>ync function () {
-<span class="cstat-no" title="statement not covered" >	try {</span>
-<span class="cstat-no" title="statement not covered" >        await _client.connect();</span>
-<span class="cstat-no" title="statement not covered" >        await listDatabases(_client);</span>
-&nbsp;
-    } catch (e) {
-<span class="cstat-no" title="statement not covered" >        console.error(e);</span>
-&nbsp;
-    } finally {
-<span class="cstat-no" title="statement not covered" >        await _client.close();</span>
-&nbsp;
-    }
+<span class="cstat-no" title="statement not covered" >  try {</span>
+<span class="cstat-no" title="statement not covered" >    await _client.connect();</span>
+<span class="cstat-no" title="statement not covered" >    await listDatabases(_client);</span>
+  } catch (e) {
+<span class="cstat-no" title="statement not covered" >    console.error(e);</span>
+  } finally {
+<span class="cstat-no" title="statement not covered" >    await _client.close();</span>
+  }
 };
 &nbsp;
-const listDatabases = <span class="fstat-no" title="function not covered" >as</span>ync function (client){
-<span class="cstat-no" title="statement not covered" >    databasesList = await client.db().admin().listDatabases();</span>
+const listDatabases = <span class="fstat-no" title="function not covered" >as</span>ync function (client) {
+<span class="cstat-no" title="statement not covered" >  databasesList = await client.db().admin().listDatabases();</span>
 &nbsp;
     //console.log("Databases:");
 <span class="cstat-no" title="statement not covered" >    databasesList.databases.forEach(<span class="fstat-no" title="function not covered" >db</span> =&gt; <span class="cstat-no" title="statement not covered" >console.log(` - ${db.name}`))</span>;</span>
 };
 &nbsp;
 module.exports = Object.freeze({
-    main,
-    listDatabases,
-    initDb,
-    getCluster,
+  main,
+  listDatabases,
+  initDb,
+  getCluster
 });
 &nbsp;</pre></td></tr></table></pre>
 
@@ -343,7 +337,7 @@ module.exports = Object.freeze({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-27T20:40:06.366Z
+                at 2023-05-31T02:10:58.132Z
             </div>
         <script src="../prettify.js"></script>
         <script>
