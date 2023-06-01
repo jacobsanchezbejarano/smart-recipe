@@ -149,7 +149,7 @@ const post_recipes = async (req, res) => {
       const errorMessage = error.details[0].message;
       return res.status(400).json({ error: errorMessage });
     }
-    console.log(req.body);
+    //console.log(req.body);
     //const data = req.body;
     const data = {
       recipe_title: req.body.recipe_title,

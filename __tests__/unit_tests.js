@@ -1,16 +1,20 @@
 const request = require('supertest');
 const express = require('express');
-const router = require('../routes/recipes.js');
+const app = require('../index');
+const routes = express.Router();
 
-const app = new express();
-app.use('/recipes', router);
+
+
+app.use('/recipe', routes.use('/recipes',require('../routes/recipes')))
 
 describe('Good Home Routes', function () {
 
   test('responds to /', async () => {
-    const res = await request(app).get('/recipes');
-    //expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+    const res = await request(app)
+    .get('/');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(200);
-    //expect(res.text).toEqual('hello world!');
+    // expect(res.body).toEqual('hello world!');
   });
+
 });
